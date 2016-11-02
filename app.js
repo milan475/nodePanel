@@ -1,4 +1,5 @@
 NProot = __dirname;
+NPconfig = require('./config.js');
 NP = [];
 
 // Initialize Web Server

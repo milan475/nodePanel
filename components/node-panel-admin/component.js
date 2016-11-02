@@ -201,7 +201,7 @@ for (route in routes) {
 	}
 }
 module.exports.init = function () {
-	app.listen(10000);
+	app.listen((NPconfig.webserverPort) ? NPconfig.webserverPort : 80);
 }
 
 

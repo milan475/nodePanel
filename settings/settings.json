@@ -1,5 +1,3 @@
 {
-  "storagePath": "/var/www/nodePanelWebsites/",
-  "adminPort":10000,
-  "webserverPort":8888
+  "storagePath": "/var/www/nodePanelWebsites/"
 }

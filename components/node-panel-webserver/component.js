@@ -5,6 +5,8 @@ var php = require("node-php");
 var bouncy = require('bouncy');
 var portStart = 8000;
 
+
+
 var WebServer = {
 	init: function () {
 		WebServer.reloadWebsites(function () {
@@ -22,7 +24,7 @@ var WebServer = {
 				}
 			});
 
-			server.listen(80);
+			server.listen((NPconfig.webserverPort) ? NPconfig.webserverPort : 80);
 		});
 	},
 	reloadWebsites: function (callback) {
