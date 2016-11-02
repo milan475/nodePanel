@@ -1,0 +1,50 @@
+.content.list {
+	h1 {
+		margin-bottom: 20px;
+	}
+}
+
+table.list {
+	margin: 0 -42px;
+	color: @blue-4;
+	width: ~"calc(100% + 84px)";
+	th,
+	td {
+		padding: 18px;
+	}
+	.collapsing {
+		width: 1px;
+		white-space: nowrap;
+	}
+	thead {
+		th {
+			text-align: left;
+			color: @blue-3;
+			border-bottom: 2px solid @blue-2;
+			padding-bottom: 10px;
+			font-weight: 700;
+			&:first-child {
+				padding-left: 42px;
+			}
+			&:last-child {
+				padding-right: 42px;
+			}
+		}
+	}
+	tbody {
+		td {
+			border-bottom: 1px solid @blue-5;
+			&:first-child {
+				padding-left: 42px;
+			}
+			&:last-child {
+				padding-right: 42px;
+			}
+		}
+		tr:nth-child(even) {
+			td {
+				background-color: @blue-1;
+			}
+		}
+	}
+}

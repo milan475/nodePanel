@@ -1,0 +1,6 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+@verticalPadding: @relative14px;
+@inputHorizontalPadding : @relative14px;
+@labelSize: 13px;

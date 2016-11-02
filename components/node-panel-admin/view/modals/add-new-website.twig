@@ -1,0 +1,20 @@
+<div class="modal-title">Add website</div>
+<form action="/websites/create" method="post" data-ajax="true" class="ui add-new-website form">
+	<div class="field">
+		<label>Name</label>
+		<input type="text" name="name" placeholder="e.g. My mom's website">
+	</div>
+	<div class="field">
+		<label>Domain names</label>
+		<input type="text" name="domains" placeholder="Multiple domains can be entered comma separated">
+	</div>
+	<div class="field">
+		<label>Type</label>
+		<select name="type" class="ui dropdown">
+			<option value="static">Static</option>
+			<option value="node">Node</option>
+			<option value="php">Php</option>
+		</select>
+	</div>
+	<button class="ui button" type="submit">Add website</button>
+</form>

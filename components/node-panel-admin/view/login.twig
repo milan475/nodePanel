@@ -1,0 +1,28 @@
+{% extends 'base.twig' %}
+{% block navigation %}
+{% endblock %}
+{% block content %}
+	<div class="login-form">
+		<form class="ui form" action="{{ ref }}" method="post">
+			<img class="logo" src="img/logo.png" width="70" />
+			<div class="lined-title">Please Login</div>
+			<div class="field">
+				<div class="ui labeled input">
+					<div class="ui label">
+						user
+					</div>
+					<input type="text" name="username">
+				</div>
+			</div>
+			<div class="field">
+				<div class="ui labeled input">
+					<div class="ui label">
+						pass
+					</div>
+					<input type="password" name="password">
+				</div>
+			</div>
+			<input class="ui button primary" value="Login" type="submit"/>
+		</form>
+	</div>
+{% endblock %}

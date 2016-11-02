@@ -1,0 +1,60 @@
+{% extends 'base.twig' %}
+{% block header %}
+	<script type="text/javascript" src="/js/website-edit.js"></script>
+{% endblock %}
+{% block content %}
+	<div class="content list">
+		<h1 class="page-title">
+			<span><i class="edit icon"></i> {{ website.name }}</span>
+			<a onclick="$('.edit-website.form')[0].submit();" class="ui right floated button" href="javascript:void(0);">
+				<i class="icon save"></i>Save
+			</a>
+		</h1>
+
+		<div class="wrap-tiny">
+			<form action="/websites/save/{{ website.id }}" method="post" class="ui edit-website form">
+				<input type="hidden" name="path" value="{{ website.path }}"/>
+
+				<div class="field">
+					<label>Name</label>
+					<input type="text" name="name" value="{{ website.name }}" placeholder="e.g. My mom's website">
+				</div>
+				<div class="field">
+					<label>Domain names</label>
+					<input type="text" name="domains" value="{{ website.domains }}" placeholder="Multiple domains can be entered comma separated">
+				</div>
+				<div class="field">
+					<label>Type</label>
+					<select name="type" class="ui dropdown">
+						<option {% if website.type == 'static' %}selected{% endif %} value="static">Static</option>
+						<option {% if website.type == 'node' %}selected{% endif %} value="node">Node</option>
+						<option {% if website.type == 'php' %}selected{% endif %} value="php">Php</option>
+					</select>
+				</div>
+				<div class="field">
+					<div class="ui checkbox">
+						<input name="git[enabled]" type="checkbox" {% if website.git.enabled %}checked{% endif %} class="git-checkbox"
+							   tabindex="0">
+						<label>Enable Git</label>
+					</div>
+				</div>
+				<div {% if website.git.enabled %}style="display: block;" {% endif %} class="git-controls">
+					<div class="field">
+						<label>Repository URL</label>
+
+						<div class="ui right icon input">
+							<input id="gitRepoUrl" type="text" name="git[url]" value="{{ website.git.url }}" placeholder="Enter a valid git repository url">
+							<i class="icon"></i>
+						</div>
+						<div {% if website.git.url and not gitIsInitialized %}style="display: block;" {% endif %} class="git-status desc">
+							Git doesn't seem to be intialized yet.
+							<a class="link" id="doGitClone" href="javascript:void(0);">Want to do a git clone?</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+
+	</div>
+{% endblock %}

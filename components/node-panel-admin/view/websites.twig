@@ -1,0 +1,35 @@
+{% extends 'base.twig' %}
+{% block header %}
+	<script type="text/javascript" src="/js/websites.js"></script>
+{% endblock %}
+{% block content %}
+	<div class="content list">
+		<h1 class="page-title">
+			Websites
+			{#<a class="ui right floated button add-new-website" href="javascript:void(0);"><i class="icon plus"></i> Add website</a>#}
+		</h1>
+		<table class="list">
+			<thead>
+			<tr>
+				<th>Name</th>
+				<th>Domains</th>
+				<th>Type</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for website in websites %}
+				<tr data-itemName="{{ website.name }}" data-itemID="{{ website.id }}">
+					<td>{{ website.name }}</td>
+					<td>{{ website.domains }}</td>
+					<td>{{ website.type }}</td>
+					<td class="collapsing">
+						<a href="/websites/edit/{{ website.id }}"><i class="icon pencil"></i></a>
+						<a class="remove-website" href="/websites/remove/{{ website.id }}"><i class="icon remove"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

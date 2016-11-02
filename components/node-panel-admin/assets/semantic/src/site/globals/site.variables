@@ -1,0 +1,11 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+
+@blue: #285576;
+
+@borderColor: #D4DDE4;
+@solidBorderColor: #D4DDE4;
+@selectedBorderColor: #A9BBC9;
+@focusedFormBorderColor: #A9BBC9;

@@ -1,0 +1,36 @@
+body.login{
+	background-color: @blue-1;
+	#content-wrapper{
+		padding: 0;
+	}
+}
+
+.login-form {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	form {
+		width: 450px;
+		background-color: #FFF;
+		margin: auto;
+		padding: 35px 50px;
+		border: 1px solid @blue-2;
+		border-radius: 4px;
+		box-shadow: 0 3px 3px rgba(221,221,221,0.5);
+		.logo {
+			margin: -110px auto 60px auto;
+			display: block;
+		}
+		input[type="submit"]{
+			margin-top: 5px;
+		}
+	}
+	.labeled.input .label{
+		text-transform: uppercase;
+		color: @blue-3;
+	}
+}

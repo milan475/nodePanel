@@ -1,0 +1,23 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+.ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input {
+  border-left-color: @solidBorderColor;
+}
+.ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input:focus {
+  border-left-color: @focusBorderColor;
+}
+
+.ui.labeled.input > .label {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: @labelSize;
+  display: flex;
+  align-items: center;
+  border: 1px solid #D4DDE4;
+  margin-right: -1px;
+  letter-spacing: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}

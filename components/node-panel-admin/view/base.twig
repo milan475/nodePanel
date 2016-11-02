@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NodePanel</title>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,100italic,300,300italic,700,400italic,900,700italic,900italic,100' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/less/main.css" type="text/css"/>
+	<script type="text/javascript" src="/js/main.js"></script>
+	{% block header %}{% endblock %}
+</head>
+<body class="{{ viewName }}">
+<div id="navigation-wrapper">
+	{% block navigation %}
+		{% include 'compontents/navigation.twig' %}
+	{% endblock %}
+</div>
+<div id="content-wrapper">
+	{% block content %}{% endblock %}
+</div>
+</body>
+</html>
