@@ -1,3 +1,5 @@
 {
-  "storagePath": "/Users/milan/nodePanelWebsites/"
+  "storagePath": "/var/www/nodePanelWebsites/",
+  "adminPort":10000,
+  "webserverPort":8888
 }
