@@ -49,7 +49,7 @@ function runPHP(req, response, next, phpdir, env) {
 			return a + b + "\n";
 		}, ""), //All HTTP headers as sent by the client in raw form. No transformation on the header names is applied.
 		SERVER_SOFTWARE: "NodeJS", //The web server's software identity.
-		SERVER_NAME: "localhost", //The host name or the IP address of the computer running the web server as given in the requested URL.
+		SERVER_NAME: req.headers.host, //The host name or the IP address of the computer running the web server as given in the requested URL.
 		SERVER_ADDR: "127.0.0.1", //The IP address of the computer running the web server.
 		SERVER_PORT: 8011, //The port to which the request was sent.
 		GATEWAY_INTERFACE: "CGI/1.1", //The CGI Specification version supported by the web server; always set to CGI/1.1.

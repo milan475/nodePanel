@@ -54,9 +54,7 @@ var WebServer = {
 				})
 
 				if (website.type == 'php') {
-					servers[website.name].use("/", php.cgi(website.path, {
-						SERVER_NAME: req.headers.host
-					}));
+					servers[website.name].use("/", php.cgi(website.path));
 				} else {
 					console.log(website.path);
 					servers[website.name].use(express.static(website.path));
