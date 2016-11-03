@@ -1,10 +1,9 @@
 var express = require('express');
 var fs = require('fs');
 var _ = require('underscore');
-var php = require("node-php");
+var php = require("./lib/phpServer");
 var bouncy = require('bouncy');
 var portStart = 8000;
-
 
 
 var WebServer = {
@@ -24,7 +23,9 @@ var WebServer = {
 				}
 			});
 
-			server.listen((NPconfig.webserverPort) ? NPconfig.webserverPort : 80);
+			var port = (NPconfig.webserverPort) ? NPconfig.webserverPort : 80;
+			server.listen(port);
+			console.log("Webserver running on " + port);
 		});
 	},
 	reloadWebsites: function (callback) {
@@ -53,7 +54,9 @@ var WebServer = {
 				})
 
 				if (website.type == 'php') {
-					servers[website.name].use("/", php.cgi(website.path));
+					servers[website.name].use("/", php.cgi(website.path, {
+						SERVER_NAME: req.headers.host
+					}));
 				} else {
 					console.log(website.path);
 					servers[website.name].use(express.static(website.path));
