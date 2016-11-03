@@ -21,6 +21,7 @@ function runPHP(req, response, next, phpdir, env) {
 	else pathinfo = parts.pathname;
 
 	var envDefaults = {
+		HTTP_ACCEPT_ENCODING: false,
 		SERVER_SIGNATURE: "NodeJS server at localhost",
 		PATH_INFO: pathinfo, //The extra path information, as given in the requested URL. In fact, scripts can be accessed by their virtual path, followed by extra information at the end of this path. The extra information is sent in PATH_INFO.
 		PATH_TRANSLATED: "", //The virtual-to-real mapped version of PATH_INFO.
