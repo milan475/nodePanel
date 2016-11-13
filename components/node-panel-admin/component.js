@@ -201,7 +201,9 @@ for (route in routes) {
 	}
 }
 module.exports.init = function () {
-	app.listen((NPconfig.adminPort) ? NPconfig.adminPort : 10000);
+	var adminPort = (NPconfig.adminPort) ? NPconfig.adminPort : 10000;
+	app.listen(adminPort);
+	console.log("Admin interface running on port " + adminPort);
 }
 
 

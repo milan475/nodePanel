@@ -12,6 +12,7 @@ var WebServer = {
 			var server = bouncy(function (req, res, bounce) {
 				var foundHost = false;
 				_.each(websites, function (website) {
+					console.log(req.headers.host);
 					if (website.domains.split(',').indexOf(req.headers.host) !== -1) {
 						foundHost = true;
 						bounce(website.port);
@@ -49,7 +50,6 @@ var WebServer = {
 				servers[website.name] = express();
 
 				servers[website.name].use("/", function (req, res, next) {
-					console.log('Got a request for: ' + website.name);
 					next();
 				})
 

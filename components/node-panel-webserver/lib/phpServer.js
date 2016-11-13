@@ -7,11 +7,17 @@ function runPHP(req, response, next, phpdir, env) {
 	var parts = url.parse(req.url);
 	var query = parts.query;
 
+
 	var file = path.join(phpdir, parts.pathname);
 
 	if (!fs.existsSync(file)) {
 		file = path.join(phpdir, "index.php");
 	} else if (fs.statSync(file).isDirectory()) {
+
+		if (file.substr(-1, 1) != '/') {
+			response.redirect(parts.pathname + '/');
+			return;
+		}
 		file = path.join(file, "index.php");
 	}
 
@@ -76,7 +82,7 @@ function runPHP(req, response, next, phpdir, env) {
 	if (/.*?\.php$/.test(file)) {
 		var res = "", err = "";
 
-		var php = child.spawn("php-cgi", [], {
+		var php = child.spawn((NPconfig.phpExecutable) ? NPconfig.phpExecutable : "php-cgi", [], {
 			env: env
 		});
 
