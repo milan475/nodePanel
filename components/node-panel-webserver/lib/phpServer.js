@@ -71,6 +71,8 @@ function runPHP(req, response, next, phpdir, env) {
 		return env["HTTP_" + x.toUpperCase().replace("-", "_")] = req.headers[x];
 	});
 
+	env['HTTP_ACCEPT_ENCODING'] = false;
+
 	if (/.*?\.php$/.test(file)) {
 		var res = "", err = "";
 
@@ -104,6 +106,7 @@ function runPHP(req, response, next, phpdir, env) {
 			var lines = res.split("\r\n");
 			var line = 0;
 			var html = "";
+			var cookies = [];
 			if (lines.length) {
 				do {
 					var m = lines[line].split(": ");
@@ -113,11 +116,22 @@ function runPHP(req, response, next, phpdir, env) {
 					if (m[0] == "Status") {
 						response.statusCode = parseInt(m[1]);
 					}
+
 					if (m.length == 2) {
-						response.setHeader(m[0], m[1]);
+
+						if (m[0] == 'Set-Cookie') {
+							cookies.push(m[1])
+						} else {
+							response.setHeader(m[0], m[1]);
+						}
+
 					}
 					line++;
 				} while (lines[line] !== "");
+
+				if (cookies.length > 0) {
+					response.setHeader("Set-Cookie", cookies);
+				}
 
 				html = lines.splice(line + 1).join("\n");
 			} else {
